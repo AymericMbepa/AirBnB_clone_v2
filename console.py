@@ -130,19 +130,19 @@ class HBNBCommand(cmd.Cmd):
                 continue
             key, value = argss_parts
             if len(value) > 1 and value[0] == '"' and value[-1] == '"':
-                value = value.replace("_", " ").replace('\\"', '"')
+                value = value[1:-1].replace("_", " ").replace('\\"', '"')
                 if '.' in value:
                     try:
                         value = float(value)
                     except ValueError:
-                        pass
+                        continue
                 else:
                     try:
                         value = int(value)
                     except ValueError:
                         continue
                 params[key] = value
-        new_instance = HBNBCommand.classes[args]()
+        new_instance = HBNBCommand.classes[class_name]()
         storage.save()
         print(new_instance.id)
         storage.save()
