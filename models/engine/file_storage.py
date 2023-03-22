@@ -57,4 +57,6 @@ class FileStorage:
                 for key in list(FileStorage.__objects.keys()):
                     if FileStorage.__objects[key] is obj:
                         del FileStorage.__objects[key]
-                        break
+                        self.save()
+            else:
+                return
