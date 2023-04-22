@@ -39,11 +39,10 @@ def python_text(text="is cool"):
     return "Python {}".format(text.replace('_', ' '))
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def n_interger(n):
-    """ display 'n is interger' if n is an integer"""
-    if isinstance(n, int):
-        return "{:d} is integer".format(n)
+    """ display 'n is a number' if n is an integer"""
+    return "{} is a number".format(n)
 
 
 if __name__ == '__main__':
